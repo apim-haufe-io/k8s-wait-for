@@ -12,7 +12,7 @@ RUN apk add --update ca-certificates \
  && apk add --update jq \
  && rm /var/cache/apk/*
 
-ADD wait_for.sh /usr/local/bin/wait_for.sh
+ADD k8s-tool.sh /usr/local/bin/k8s-tool.sh
 
 ARG VCS_REF
 ARG BUILD_DATE

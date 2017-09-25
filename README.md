@@ -8,7 +8,7 @@ Thanks a bunch to @groundnuty for sharing this piece of work! This derivative wo
 
 ## Using
 
-Please consult `wait_for.sh -h` for detailed documentation.
+Please consult `k8s-tool.sh -h` for detailed documentation.
 
 ## Usage in wicked
 
