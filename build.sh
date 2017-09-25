@@ -18,7 +18,7 @@ echo "============================================"
 
 gitRef=$(git rev-parse HEAD)
 buildDate=$(date -u +'%Y-%m-%d %H:%M:%S UTC')
-imageName="${DOCKER_PREFIX}k8s-wait:${DOCKER_TAG}"
+imageName="${DOCKER_PREFIX}k8s-tool:${DOCKER_TAG}"
 docker build \
     --build-arg VCS_REF=${gitRef} \
     --build-arg BUILD_DATE="${buildDate}" \
