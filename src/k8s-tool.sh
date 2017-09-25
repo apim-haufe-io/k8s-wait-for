@@ -161,7 +161,9 @@ wait_for() {
 }
 
 ready() {
+    echo "[$(date +'%Y-%m-%d %H:%M:%S')]"
     printf "%s %s %s is ready." "$1" "$2" "$KUBECTL_ARGS"
+    echo ""
 }
 
 scale_deployment() {
