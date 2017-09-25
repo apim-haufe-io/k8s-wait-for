@@ -13,11 +13,13 @@ DEBUG=0
 
 usage() {
 cat <<EOF
-This script waits until a job, pod or service enter ready state. 
+This script waits until a job, pod or service enter ready state. It can
+also scale a deployment.
 
 ${0##*/} job [<job name> | -l<kubectl selector>]
 ${0##*/} pod [<pod name> | -l<kubectl selector>]
 ${0##*/} service [<service name> | -l<kubectl selector>]
+${0##*/} scale <deployment name> <replicas>
 
 Examples:
 Wait for all pods with with a following label to enter 'Ready' state:
@@ -162,6 +164,12 @@ ready() {
     printf "%s %s %s is ready." "$1" "$2" "$KUBECTL_ARGS"
 }
 
+scale_deployment() {
+    deployment_name="$1"
+    replicas="$2"
+    kubectl scale deployment $deployment_name --replicas=$replicas
+}
+
 main() {
     if [ $# -eq 0 ]; then
         usage
@@ -169,6 +177,7 @@ main() {
 
     main_name=""
     main_resouce=""
+    replicas=""
 
     case $1 in
         pod)
@@ -189,6 +198,14 @@ main() {
             shift
             shift
             ;;
+        scale)
+            main_resouce="scale"
+            main_name="$2"
+            replicas="$3"
+            shift
+            shift
+            shift
+            ;;
         *)
             printf 'WARN: Unknown option (ignored): %s\n' "$1" >&2
             exit 1
@@ -206,6 +223,9 @@ main() {
             ;;
         service)
             wait_for_service "$main_name"
+            ;;
+        scale)
+            scale_deployment "$main_name" $replicas
             ;;
     esac
 

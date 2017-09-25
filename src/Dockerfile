@@ -19,8 +19,8 @@ ARG BUILD_DATE
 
 # Metadata
 LABEL org.label-schema.vcs-ref=$VCS_REF \
-      org.label-schema.vcs-url="https://github.com/apim-haufe-io/wicked.k8s-wait" \
+      org.label-schema.vcs-url="https://github.com/apim-haufe-io/wicked.k8s-tool" \
       org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.docker.dockerfile="/src/Dockerfile"
 
-ENTRYPOINT ["wait_for.sh"]
+ENTRYPOINT ["k8s-tool.sh"]
