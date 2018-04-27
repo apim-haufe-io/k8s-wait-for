@@ -2,7 +2,7 @@ FROM alpine
 
 LABEL maintainer="Michal Orzechowski <orzechowski.michal@gmail.com>, Martin Danielsson <martin.danielsson@haufe-lexware.com>"
 
-ENV KUBE_LATEST_VERSION="v1.7.6"
+ENV KUBE_LATEST_VERSION="v1.10.1"
 
 RUN apk add --update ca-certificates \
  && apk add --update -t deps curl\
