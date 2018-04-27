@@ -10,9 +10,12 @@ RUN apk add --update ca-certificates \
  && chmod +x /usr/local/bin/kubectl \
  && apk del --purge deps \
  && apk add --update jq \
- && rm /var/cache/apk/*
+ && rm /var/cache/apk/* \
+ && mkdir -p /usr/src/app
 
 ADD k8s-tool.sh /usr/local/bin/k8s-tool.sh
+ADD git_branch /usr/src/app/git_branch
+ADD git_last_commit /usr/src/app/git_last_commit
 
 ARG VCS_REF
 ARG BUILD_DATE
