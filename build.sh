@@ -16,8 +16,8 @@ echo "============================================"
 echo "Building image..."
 echo "============================================"
 
-git log -1 --decorate=short > ./git_last_commit
-git rev-parse --abbrev-ref HEAD > ./git_branch
+git log -1 --decorate=short > ./src/git_last_commit
+git rev-parse --abbrev-ref HEAD > ./src/git_branch
 
 gitRef=$(git rev-parse HEAD)
 buildDate=$(date -u +'%Y-%m-%d %H:%M:%S UTC')
